@@ -24,8 +24,12 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50) ➔ false
      */
     public boolean acceptPackage(int weightPounds) {
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return true;
+        }
         return false;
     }
+
 
     /*
     Scamper Shipping delivers packages by hand, and some packages can be awkward to carry.
@@ -41,8 +45,10 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50, 4, 5, 10) ➔ false
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches) {
-        return false;
-    }
+        if (weightPounds <= MAX_WEIGHT_POUNDS && lengthInches * widthInches * heightInches < MAX_CUBIC_INCHES) {
+            return true;
+        }
+    return false;}
 
     /*
     All was well until a customer showed up with a 16-foot garden hose laid out straight in a 2x2x194 inch shipping box.
@@ -64,6 +70,10 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50, 4, 5, 10, true) ➔ false
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches, boolean isSurchargePaid) {
-        return false;
+        if (weightPounds <= MAX_WEIGHT_POUNDS && lengthInches * widthInches * heightInches < MAX_CUBIC_INCHES && !isSurchargePaid){
+        return true;
     }
+
+    return false;
+}
 }

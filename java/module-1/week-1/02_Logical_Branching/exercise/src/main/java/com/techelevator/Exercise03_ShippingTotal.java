@@ -47,7 +47,7 @@ public class Exercise03_ShippingTotal {
      */
     public double calculateShippingTotal(int weightPounds) {
         double total = calculateShippingRate(weightPounds) * weightPounds;
-            return total;
+        return total;
     }
 
 
@@ -56,9 +56,9 @@ public class Exercise03_ShippingTotal {
      * give them 10% off of their order.
      * Implement the logic to calculate the correct shipping rate when provided a
      * weight in pounds and a boolean value for hasDiscount.
-     * 
+     *
      * You may use any previous methods in your solution.
-     * 
+     *
      * Examples:
      * calculateShippingTotal(10, false) ➔ 5.0
      * calculateShippingTotal(10, true) ➔ 4.5
@@ -71,7 +71,17 @@ public class Exercise03_ShippingTotal {
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
 
-        return 0.0;
+        if (hasDiscount) {
+            double discount = 0.90;
+            double total = calculateShippingRate(weightPounds) * weightPounds * discount;
+            return total;
+        }
+        if (!hasDiscount){
+            double total = calculateShippingRate(weightPounds) * weightPounds;
+    return total;
+        }
+    return calculateShippingTotal(weightPounds);
     }
-
 }
+
+

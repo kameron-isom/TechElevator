@@ -51,13 +51,10 @@ public class Exercise01_TestGrading {
             return 2;
         }
         if (score >= 25) {
-        return 1;
-    }
-            return 0;
+            return 1;
         }
-
-
-
+        return 0;
+    }
 
 
     /*
@@ -75,13 +72,23 @@ public class Exercise01_TestGrading {
     gradeTestLetter(70) ➔ 'C'
     gradeTestLetter(45) ➔ 'F'
      */
-     public char gradeTestLetter(int score) {
-         if (score >= 90) {
-             return 'A';
-     }
-     if (score  >= 80) {
-         return 'B';
+    public char gradeTestLetter(int score) {
+        if (score >= 90) {
+            return 'A';
+        }
+        if (score >= 80) {
+            return 'B';
 
-     };}
+        }
+    if  (score >= 70) {
+        return 'C';
+        }
+    if ( score >= 60) {
+        return 'D';
+        }
+    return 'F';
+    }
+}
+
 
 

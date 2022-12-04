@@ -16,6 +16,9 @@ public class Exercise04_HotelReservation {
     private final double LATE_CHECKOUT_FEE = 20.0;
     private final int MINIMUM_NIGHTS_FOR_DISCOUNT_RATE = 3;
 
+
+
+
     /*
     Using the rates from above, implement the logic to determine the total amount based on 
     the number of nights a guest stays.
@@ -26,8 +29,16 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3) ➔ 269.97
      */
     public double calculateStayTotal(int numberOfNights) {
-        return 0.0;
+        if (numberOfNights > 2) {
+            return DISCOUNT_RATE * numberOfNights;
+        } else {
+            return DAILY_RATE * numberOfNights;
+        }
     }
+
+
+
+
 
     /*
     The owners of Innovator's Inn offer parking at an additional cost of $25.00 per night.
@@ -40,8 +51,12 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, false) ➔ 269.97
     calculateStayTotal(3, true) ➔ 344.97
      */
-    public double calculateStayTotal(int numOfTotalNights, boolean includesParking) {
-        return 0.0;
+    public double calculateStayTotal ( int numOfTotalNights, boolean includesParking) {
+        double baseHotelCost = calculateStayTotal(numOfTotalNights);
+        if (includesParking){
+            baseHotelCost += PARKING_RATE * numOfTotalNights;
+        }
+        return baseHotelCost ;
     }
 
     /*
@@ -60,7 +75,11 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, true, false) ➔ 344.97
     calculateStayTotal(3, true, true) ➔ 364.97
      */
-    public double calculateStayTotal(int numOfTotalNights, boolean includesParking, boolean includesLateCheckout) {
-        return 0.0;
+        public double calculateStayTotal ( int numOfTotalNights, boolean includesParking, boolean includesLateCheckout){
+            double baseHotelCost = calculateStayTotal( numOfTotalNights, includesParking) ;
+            if (includesLateCheckout) {
+                return baseHotelCost + LATE_CHECKOUT_FEE;
+            }
+            return baseHotelCost;
+        }
     }
-}
