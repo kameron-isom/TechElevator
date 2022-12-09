@@ -27,8 +27,15 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
-        return new boolean[] {};
+        boolean[] seating = new boolean[numberOfSeats];
+
+        for (int i = 0; i < seating.length; i++) {
+            seating[i] = AVAILABLE;
+
+        }
+        return seating;
     }
+
 
     /*
     Once passengers begin boarding the plane, gate attendants need a way to determine how many available
@@ -46,23 +53,42 @@ public class Exercise02_BoardingGate {
     getAvailableSeatCount([]) → 0
      */
     public int getAvailableSeatCount(boolean[] seatingChart) {
-        return 0;
+        int seating = 0;
+        for (int i = 0; i < seatingChart.length; i++) {
+            if (seatingChart[i] == AVAILABLE) {
+                seating++;
+            }
+        }
+        return seating;
     }
+
 
     /*
-    The crew determined that it would be nice to know how many rows on the plane are at full occupancy.
-    Each row has three seats and a row is at full occupancy if all three seats have someone sitting in them.
+        The crew determined that it would be nice to know how many rows on the plane are at full occupancy.
+        Each row has three seats and a row is at full occupancy if all three seats have someone sitting in them.
 
-    Using the boolean array, implement the logic to count the number of full rows on the plane.
-    Note: A new row starts at every third element. For example, row one begins with index 0, row two begins with index 3, and so on.
+        Using the boolean array, implement the logic to count the number of full rows on the plane.
+        Note: A new row starts at every third element. For example, row one begins with index 0, row two begins with index 3, and so on.
 
-    Examples:
-    getNumberOfFullRows([OCCUPIED, OCCUPIED, OCCUPIED, AVAILABLE, AVAILABLE, AVAILABLE]) → 1
-    getNumberOfFullRows([AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE]) → 0
-    getNumberOfFullRows([OCCUPIED, AVAILABLE, AVAILABLE, OCCUPIED, AVAILABLE, AVAILABLE]) → 0
-     */
+        Examples:
+        getNumberOfFullRows([OCCUPIED, OCCUPIED, OCCUPIED, AVAILABLE, AVAILABLE, AVAILABLE]) → 1
+        getNumberOfFullRows([AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE]) → 0
+        getNumberOfFullRows([OCCUPIED, AVAILABLE, AVAILABLE, OCCUPIED, AVAILABLE, AVAILABLE]) → 0
+         */
     public int getNumberOfFullRows(boolean[] seatingChart) {
-        return 0;
-    }
+        int rowsAtOccupancy = 0;
+        for (int i = 0; i < seatingChart.length; i += 3) {
+            if (seatingChart[i] == OCCUPIED && seatingChart[i + 1] == OCCUPIED && seatingChart[i + 2] == OCCUPIED) {
+                rowsAtOccupancy += 1;
+            }
 
+
+        }
+        return rowsAtOccupancy;
+    }
 }
+
+
+
+
+
