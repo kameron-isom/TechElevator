@@ -25,8 +25,10 @@ public class Exercise05_Weather {
 	belowFreezing([]) → 0
     */
 	public int belowFreezing(int[] dailyHighs) {
-		return 0;
-	}
+        int totalFreezingTemperatures = dailyHighs.length;
+        for (int i= 0; i < dailyHighs.length; i++ )
+            return dailyHighs [FREEZING_TEMPERATURE];
+            return totalFreezingTemperatures;}
 
     /*
     GaleForce also needs to determine the hottest day when given an upcoming forecast.

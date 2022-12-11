@@ -12,10 +12,10 @@ public class DiscountCalculator {
         boolean finished = false;
         while (!finished) {
             //Prompt user to enter price
-            System.out.print("Please enter a list of prices, separated by spaces: ");
+            System.out.print("Please enter a list of prices, separated by comas: ");
             Scanner input = new Scanner(System.in);
             String prices = input.nextLine();
-            String[] priceArray = prices.split(" ");
+            String[] priceArray = prices.split(" , ");
 
             //Prompt user to enter discount percentage
             System.out.print("Please enter a discount percentage (20 for a 20% discount, for example): ");
@@ -39,7 +39,7 @@ public class DiscountCalculator {
 
             System.out.print("Are you finished (y/n)? ");
             String response = input.nextLine();
-            if (response.equals("y")) {
+            if (response.equalsIgnoreCase(" y " ) || response.equalsIgnoreCase( "Yes") {
                 finished = true;
             }
         }

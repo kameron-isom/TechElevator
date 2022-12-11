@@ -40,4 +40,5 @@ public class Example2 {
         return false;
     }
 
+    str.contains
 }

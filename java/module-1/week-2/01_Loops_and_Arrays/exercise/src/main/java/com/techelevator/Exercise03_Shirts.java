@@ -46,13 +46,14 @@ public class Exercise03_Shirts {
         for (int i = 1; i < totalOfShirts.length; i += 3) {
             totalOfShirts[i] = 'M';
         }
-        for (int i = 2; i < totalOfShirts.length; i = +3) {
+        for (int i = 2; i < totalOfShirts.length; i += 3) {
             totalOfShirts[i] = 'L';
         }
 
 
         return totalOfShirts;
     }
+
 
 
 
@@ -71,16 +72,14 @@ public class Exercise03_Shirts {
      */
 
     public boolean placeRequest(char[] order) {
-        char[] totalOrders = new char[order];
-        int totalOrders = 0;
-        for (int i = 0; i < totalOrders.length; i++) {
-            if (totalOrders[i] == 'S') {
-                totalOrders = false ;
+
+        for (int i = 0; i < order.length; i++) {
+            if (order[i] == 'S') {
+                return true;
             }
+
         }
-
-
-        return true;
+        return false;
     }
 }
 
