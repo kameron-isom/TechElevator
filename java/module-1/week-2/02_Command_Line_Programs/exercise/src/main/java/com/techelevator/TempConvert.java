@@ -2,17 +2,36 @@ package com.techelevator;
 
 import java.util.Scanner;
 
-public class TempConvert {
+public class Tempconvert {
 
 	public static void main(String[] args) {
-		Scanner input= new Scanner(System.in);
-		System.out.print("Enter Tempature in Celsius or Fahrenheit.");
+
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter Temperature");
+		String value = input.nextLine();
+		String nonValue = "not applicable";
+		double temperatureInput = Double.parseDouble(value);
 
 
-		int temperatureCelsius = (temperatureFarenheit - 32) / 1.8;
-		int temperatureFarenheit = temperatureCelsius * 1.8 + 3;
-		System.out.println(temperatureCelsius);
+		System.out.println("Enter F or C for Celcius or Farheniet");
+		String charInput = input.nextLine();
+		if (charInput.equals("F")) {
+			double tempInF = temperatureInput * 1.8 + 32;
+			return tempInF;
 
+		}
+		if (charInput.equals("C")) {
+			double tempInC = (temperatureInput - 32) / 1.8;
+			return tempInC;
+		}
+
+
+		System.out.println("Temparutre is" + temperatureInput);
 	}
-
 }
+
+
+
+
+
+
