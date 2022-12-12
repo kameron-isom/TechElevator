@@ -2,7 +2,7 @@ package com.techelevator;
 
 import java.util.Scanner;
 
-public class Tempconvert {
+public class TempConvert {
 
 	public static void main(String[] args) {
 
@@ -17,12 +17,12 @@ public class Tempconvert {
 		String charInput = input.nextLine();
 		if (charInput.equals("F")) {
 			double tempInF = temperatureInput * 1.8 + 32;
-			return tempInF;
+
 
 		}
 		if (charInput.equals("C")) {
 			double tempInC = (temperatureInput - 32) / 1.8;
-			return tempInC;
+
 		}
 
 
