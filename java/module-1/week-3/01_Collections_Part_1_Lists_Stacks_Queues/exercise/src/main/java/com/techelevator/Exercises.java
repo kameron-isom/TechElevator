@@ -91,11 +91,15 @@ return result;
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		List <Integer> result = new ArrayList<>();
-		for(int i= 0; i<integerArray.length; i++){
-			if(integerArray[i] %2 == 0);
-			result.add(integerArray[i]);
+		List<Integer> result = new ArrayList<>();
+
+		for (int i = 0; i < integerArray.length; i++) {
+			if (i % 2 == 0) {
+				result.remove(integerArray[i]);
+
 			}
+
+		}
 		return result;
 	}
 
@@ -107,9 +111,15 @@ return result;
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		for (int i=0; i <integerList.size(); i++){
-			if(integerList.contains(intToFind) && (integerList.contains(intToFind))){
-				return true;
+		int count =0;
+
+		for (Integer num: integerList){
+			if(num == intToFind){
+				count ++;
+				if (count >=2){
+					return true;
+				}
+
 			}
 		}
 		return false;

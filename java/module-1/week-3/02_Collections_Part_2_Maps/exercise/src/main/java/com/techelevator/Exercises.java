@@ -1,7 +1,6 @@
 package com.techelevator;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -140,11 +139,13 @@ public class Exercises {
         // if peter has more than 50000 && paul has 10000 then create peterpaulpartnership
         int petersMoney = peterPaul.get("Peter");
         int paulsMoney = peterPaul.get("Paul");
-
+        int petersQuater = petersMoney/4 ;
+        int paulsQuater = paulsMoney/4;
         if(petersMoney >= 5000 && paulsMoney >= 100000){
-          int moneyForPartnership = petersMoney/4 + paulsMoney/4;
-          peterPaul.put("Peter", moneyForPartnership);
-          peterPaul.put("Paul", moneyForPartnership);
+
+          peterPaul.put("PeterPaulPartnership", petersQuater +paulsQuater);
+          peterPaul.put("Paul", paulsMoney-paulsQuater);
+          peterPaul.put("Peter", petersMoney-petersQuater);
 
         }
         return peterPaul;
@@ -161,11 +162,13 @@ public class Exercises {
     public Map<String, String> beginningAndEnding(String[] words) {
 
         Map<String, String> key = new HashMap<>();
-        for (Map.Entry<String, String> keys : key.entrySet()){
+
             // return the last first character in the value as the key and the last character in the value as the value.
-           
+        for (String keys : words){
+
+            //key.put(keys.charAt(0) , keys.charAt(keys.length()-1));
         }
-        return null;
+        return key;
     }
 
     /*
@@ -181,7 +184,18 @@ public class Exercises {
      *
      */
     public Map<String, Integer> wordCount(String[] words) {
-        return null;
+        Map<String, Integer> map = new HashMap<>();
+        for (String result : words) {
+            if (map.containsKey(result)) {
+                Integer total = map.get(result);
+                total++;
+                map.put(result, total);
+            } else {
+                map.put(result,1);
+            }
+
+        }
+        return map;
     }
 
     /*
@@ -196,7 +210,17 @@ public class Exercises {
      *
      */
     public Map<Integer, Integer> integerCount(int[] ints) {
-        return null;
+        Map <Integer, Integer> countMap = new HashMap<>();
+        for (Integer key: ints) {
+            if (!countMap.containsKey(key)) {
+                countMap.put(key, 1);
+            } else {
+                Integer count = countMap.get(key);
+                countMap.put(key, count + 1);
+            }
+
+        }
+        return countMap;
     }
 
     /*
