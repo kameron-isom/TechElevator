@@ -166,7 +166,9 @@ public class Exercises {
             // return the last first character in the value as the key and the last character in the value as the value.
         for (String keys : words){
 
-            //key.put(keys.charAt(0) , keys.charAt(keys.length()-1));
+          String firstLetter = keys.substring(0,1);
+          String lastLetter = keys.substring(keys.length()-1);
+          key.put(firstLetter, lastLetter);
         }
         return key;
     }
@@ -233,6 +235,14 @@ public class Exercises {
      *
      */
     public Map<String, Boolean> wordMultiple(String[] words) {
+        Map < String, Boolean> keyValue= new HashMap<>();
+        // return true if string appears 2 or more times in an array
+        // return true
+       // for (String values: words){
+       // if (keyValue.containsValue(values)){
+         //   Integer total = keyValue.;
+           // total
+        
         return null;
     }
 
