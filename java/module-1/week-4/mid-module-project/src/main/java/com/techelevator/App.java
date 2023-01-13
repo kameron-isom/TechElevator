@@ -41,10 +41,10 @@ public class App {
          */
         for (String blanks : dataset) {
             String[] elements = blanks.split(FIELD_DELIMITER);
-            titles.add(elements[0]);
-            authors.add(elements[1]);
-            publishedYears.add(Integer.parseInt(elements[2]));
-            prices.add(new BigDecimal(elements[3]));
+            titles.add(elements[TITLE_FIELD]);
+            authors.add(elements[AUTHOR_FIELD]);
+            publishedYears.add(Integer.parseInt(elements[PUBLISHED_YEAR_FIELD]));
+            prices.add(new BigDecimal(elements[PRICE_FIELD]));
         }
 
     }
@@ -190,7 +190,8 @@ public class App {
      */
     private void displaySearchResults(List<Integer> indexes){
         for (Integer searchResults: indexes){
-            System.out.println(titles.get(searchResults) +": "+ authors.get(searchResults) +": "+ publishedYears.get(searchResults) + ": " + "$" + prices.get(searchResults));
+            System.out.println(titles.get(searchResults) +": "+ authors.get(searchResults) +": "+
+                    publishedYears.get(searchResults) + ": " + "$" + prices.get(searchResults));
 
             }
         promptForReturn();
