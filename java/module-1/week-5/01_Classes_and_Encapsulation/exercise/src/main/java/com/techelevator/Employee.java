@@ -63,6 +63,7 @@ public class Employee {
 
     //create method called raiseSalary
     public void raiseSalary (double precent){
-
+         double percent = (5.5 * annualSalary)/100;
+        annualSalary = annualSalary + percent;
     }
 }
