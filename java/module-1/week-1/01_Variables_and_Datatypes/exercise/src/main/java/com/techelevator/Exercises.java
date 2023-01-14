@@ -264,7 +264,7 @@ public class Exercises {
         31. Joy will see her grandma in two days. How many hours until she sees
         her?
         */
-        int daysUntilJoySeesHerGrandma = 11;
+        int daysUntilJoySeesHerGrandma = 2;
         int hoursInADay = 24;
         int hoursUntilJoYSeesHerGrandma= hoursInADay * daysUntilJoySeesHerGrandma;
 
@@ -433,7 +433,7 @@ int unfilledBox = tradingCards % boxOfCards;
 
         int bakedCroissants = 17;
         int cristinaGuest = 7;
-        double croissantsGuestGet = bakedCroissants / cristinaGuest;
+        double croissantsGuestGet = (bakedCroissants / cristinaGuest);
 
 
 	    /* Exercise 51
@@ -465,7 +465,7 @@ String stringfour = stringtwo + stringone + stringthree;
 	    */
     int totalDistance = 800;
     int distanceTravled = 537;
-    double precentageCompleted = distanceTravled /totalDistance;
+    double precentageCompleted = distanceTravled /totalDistance *100;
     }
 
 }
