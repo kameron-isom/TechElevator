@@ -7,11 +7,13 @@ public class BankCustomer {
     private String name;
     private String address;
     private String phoneNumber;
-   private static final int ACCOUNTISVIP= 25000;
+    private static final int ACCOUNTISVIP = 25000;
 
-    public List<Accountable> accounts= new ArrayList<>();
+    private List<Accountable> accounts = new ArrayList<>();
 
-    public String getName(){
+
+
+    public String getName() {
         return name;
     }
 
@@ -23,43 +25,36 @@ public class BankCustomer {
         return address;
     }
 
-    public void setAddress(){
-        this.address=address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber (){
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public static int getACCOUNTISVIP() {
-        return ACCOUNTISVIP;
+    public Accountable[] getAccounts() {
+        return accounts.toArray(new Accountable[accounts.size()]);
     }
 
-    public BankCustomer(){
-        super();
-
+    public void addAccount(Accountable account) {
+        accounts.add(account);
     }
 
-
-    public Accountable [] getAccounts(){
-        return accounts.toArray(new Accountable[0]);
-    }
-
-    public void addAccount(Accountable newAccount){
-        accounts.add(newAccount);
-    }
-
-    public boolean isVIP(){
-        if (getAccounts().length >= ACCOUNTISVIP){
+    public boolean isVip() {
+        int total = 0;
+        for (Accountable account : accounts) {
+            total += account.getBalance();
+        }
+        if(total >= ACCOUNTISVIP){
             return true;
         }
-
-
-    return false;
+        return false;
     }
-
 }
+
+

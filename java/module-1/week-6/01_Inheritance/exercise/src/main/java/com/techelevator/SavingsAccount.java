@@ -3,7 +3,7 @@ package com.techelevator;
 public class SavingsAccount extends BankAccount{
 
     public static final int SERVICE_FEE=2;
-    public static final int MINIMUM_BALANCE_FOR_FEE= 150;
+    public static final int MINIMUM_FEE_BALANCE= 150;
     public static final int MINIMUM_BALANCE= 2;
 
     public SavingsAccount(String accountHolderName, String accountNumber) {
@@ -15,7 +15,7 @@ public class SavingsAccount extends BankAccount{
 
     @Override
     public int withdraw (int amountToWithDraw) {
-        if (getBalance() - amountToWithDraw >= MINIMUM_BALANCE_FOR_FEE) {
+        if (getBalance() - amountToWithDraw >= MINIMUM_FEE_BALANCE) {
             return super.withdraw(amountToWithDraw);
         }
             if (getBalance() - amountToWithDraw >= MINIMUM_BALANCE ) {
