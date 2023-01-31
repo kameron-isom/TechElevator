@@ -10,7 +10,7 @@ public class MaxEnd3Test {
         MaxEnd3 max= new MaxEnd3();
         int[] newArray = new int[] {11,11,11};
         int[] originalArray = new int [] {11,5,9};
-        Assert.assertEquals(newArray,max.makeArray(originalArray));
+        Assert.assertEquals(originalArray,max.makeArray(newArray));
 
     }
 }
