@@ -37,7 +37,7 @@ public class FizzWriter {
 					writer.println(lineCount);
 				}
 			}
-			
+
 
 		} catch (Exception e){
 			System.out.println("File not found");

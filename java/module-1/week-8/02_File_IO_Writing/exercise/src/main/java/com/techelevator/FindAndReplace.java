@@ -18,44 +18,38 @@ public class FindAndReplace {
     public void run() {
         /* Your code goes here */
 
-        System.out.println("What is the search word");
+        System.out.println("What is the search word? ");
         String originalWord = userInput.nextLine();
 
+        System.out.println("What is the replacement word? ");
+        String replacementWord = userInput.nextLine();
 
-        System.out.println("What is the replacement word");
-        String replacementWord= userInput.nextLine();
+        System.out.println("What is the source file? ");
+        String sourceFilepath = userInput.nextLine();
 
-        System.out.print("What is the source file: ");
-        String sourcefilepath = userInput.nextLine();
+        System.out.println("What is the destination file? ");
+        String destinationFilePath = userInput.nextLine();
+        userInput.close();
 
-        System.out.println("What is the destination file");
-        String destinationFilePath= userInput.nextLine();
-
-        File sourceFile= new File(sourcefilepath);
-        File copyFile= new File(destinationFilePath);
+        File sourceFile = new File(sourceFilepath);
+        File copyFile = new File(destinationFilePath);
 
 
+        try (Scanner fileInput = new Scanner(sourceFile);
+             PrintWriter writer = new PrintWriter(copyFile)) {
 
-        try(Scanner fileInput= new Scanner(sourceFile);
-            PrintWriter writer =new PrintWriter(sourceFile)){
-
-            while (fileInput.hasNextLine()){
+            while (fileInput.hasNextLine()) {
                 String lineOfText = fileInput.nextLine();
-
-
-
-                writer.println(lineOfText.replace(originalWord,replacementWord));
-
-
+                if (lineOfText.contains(originalWord)) {
+                    writer.println(lineOfText.replace(originalWord, replacementWord));
+                } else {
+                    writer.println(lineOfText);
+                }
             }
-
-        } catch (FileNotFoundException e){
-            System.out.println("File not Found");
+                } catch(FileNotFoundException e){
+                    System.out.println("File not Found");
+                }
+            }
         }
 
 
-
-
-    }
-
-}
