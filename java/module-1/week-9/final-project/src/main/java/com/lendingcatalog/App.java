@@ -1,6 +1,8 @@
 package com.lendingcatalog;
 
 import com.lendingcatalog.model.*;
+import com.lendingcatalog.util.FileStorageService;
+import com.lendingcatalog.util.exception.FileStorageException;
 
 import java.util.*;
 
@@ -23,7 +25,50 @@ public class App {
 
     private void initialize() {
         // Requirement: Data transformation
+       Map<String, String> membersfile= new HashMap<>();
+        try {
+          List<String> memberData=  FileStorageService.readContentsOfFile(FILE_BASE_PATH+ "members.dat");
 
+            for (String memberList: memberData) {
+                    String[] fields = memberList.split(FIELD_DELIMITER);
+                    if (fields.length == 3) {
+                        String firstName = fields[0];
+                        String lastName = fields[1];
+                        String fileName = fields[2];
+                        Member member = new Member(firstName, lastName);
+
+
+                        List<CatalogItem> items = new ArrayList<>();
+                        List<String> itemstoFile = FileStorageService.readContentsOfFile(FILE_BASE_PATH + fileName);
+                        for (String itemFile : itemstoFile) {
+                            String[] itemFields = itemFile.split(FIELD_DELIMITER);
+                            if (itemFields.length == 4) {
+
+                                switch (itemFields[0]) {
+                                    case ("book"):
+                                        Book book = new Book(itemFields[1], itemFields[2], itemFields[3]);
+                                        book.registerItem();
+                                        items.add(book);
+                                        break;
+                                    case ("movie"):
+                                        Movie movie = new Movie(itemFields[1], itemFields[2], itemFields[3]);
+                                        movie.registerItem();
+                                        items.add(movie);
+                                        break;
+                                    case ("tool"):
+                                        Tool tool = new Tool(itemFields[1], itemFields[2], itemFields[3]);
+                                        tool.registerItem();
+                                        items.add(tool);
+                                        break;
+                                }
+                                catalog.put(member.toString(),items); }
+                      }
+                    }
+
+                }
+        } catch (FileStorageException e) {
+            System.out.println("File not found");
+        }
     }
 
 
