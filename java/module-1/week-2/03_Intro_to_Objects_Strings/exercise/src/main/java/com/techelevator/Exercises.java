@@ -57,9 +57,12 @@ public class Exercises {
      */
     public String makeOutWord(String out, String word) {
 
-        String answer = out.replace("", word);
+        String first = out.substring(0,2);
+        String second =out.substring(2,out.length());
 
-        return (answer);
+
+
+        return first + word + second;
     }
 
     /*
@@ -170,7 +173,7 @@ public class Exercises {
             return str;
         }
 //        for (int i =0; i < str.length(); i++);
-        String answer = str.substring(2) + str.substring(0, 3);
+        String answer = str.substring(3,str.length()) + str.substring(0, str.length()/2+1);
 
         return answer;
     }

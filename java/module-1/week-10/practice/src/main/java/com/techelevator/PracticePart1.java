@@ -1,9 +1,6 @@
 package com.techelevator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PracticePart1 {
 
@@ -17,7 +14,8 @@ public class PracticePart1 {
 		Q01_removeFraction(8.0, 2.5) -> 3.0
 	*/
 	public double Q01_removeFraction(double numerator, double denominator) {
-		return 0;
+		return Math.floor(numerator / denominator);
+
 	}
 
 	/*
@@ -34,6 +32,11 @@ public class PracticePart1 {
 		Q02_isWaterTemperatureExtreme(212) -> true
 	*/
 	public boolean Q02_isWaterTemperatureExtreme(int temperature) {
+		int freezing = 32;
+		int boiling = 212;
+		if (temperature <= freezing || temperature >= boiling) {
+			return true;
+		}
 		return false;
 	}
 
@@ -58,8 +61,15 @@ public class PracticePart1 {
 		Q03_isLeapYear(2019) -> false
 	*/
 	public boolean Q03_isLeapYear(int year) {
+		if (year % 4 == 0 && year % 100 != 0) {
+			return true;
+		}
+		if (year % 400 == 0) {
+			return true;
+		}
 		return false;
 	}
+
 
 	/*
 	Topics: Branching
@@ -79,8 +89,51 @@ public class PracticePart1 {
 		Q04_carWashPrice('P', true, true) -> 11
 	*/
 	public int Q04_carWashPrice(char typeOfWash, boolean isMorning, boolean isWeekend) {
-		return 0;
+
+		if(!isMorning && !isWeekend && typeOfWash=='P') {
+			typeOfWash=10;
+		}
+		if (!isMorning && !isWeekend && typeOfWash=='B'){
+			typeOfWash=8;
+
+		}
+
+		if (!isMorning && !isWeekend && typeOfWash=='S') {
+			typeOfWash = 12;
+		}
+
+		if(isMorning && isWeekend && typeOfWash=='P') {
+			typeOfWash = 10;
+			return typeOfWash + 1;
+		}
+		if(isMorning && isWeekend && typeOfWash=='S') {
+				typeOfWash = 12;
+				return typeOfWash+1;
+			}
+		if(isMorning && isWeekend && typeOfWash=='B') {
+			typeOfWash = 8;
+			return typeOfWash+1;
+		}
+		if (isMorning&& !isWeekend&& typeOfWash=='P'){
+			typeOfWash=10;
+		return typeOfWash-1;
 	}
+		if (!isMorning&& isWeekend&& typeOfWash=='P'){
+			typeOfWash=10;
+			return typeOfWash+2;
+		}
+		if (!isMorning&& isWeekend&& typeOfWash=='B'){
+			typeOfWash=8;
+			return typeOfWash+2;
+		}
+		if (!isMorning&& isWeekend&& typeOfWash=='S'){
+			typeOfWash=12;
+			return typeOfWash+2;
+		}
+		return typeOfWash;
+	}
+		;
+
 
 	/*
 	Topics: Loops
@@ -96,7 +149,13 @@ public class PracticePart1 {
 		 Q05_sumOfNumbersDivisibleBy7Between(56, 49) -> 0
 	*/
 	public int Q05_sumOfNumbersDivisibleBy7Between(int lowestNumber, int highestNumber) {
-		return 0;
+		int sum = 0;
+		for (int i = lowestNumber; i <= highestNumber; i++) {
+			if (i % 7 == 0) {
+				sum += i;
+			}
+		}
+		return sum;
 	}
 
 	/*
@@ -117,7 +176,17 @@ public class PracticePart1 {
 		Q06_wordBetweenTags("<P>This is between.", "<P>") -> "" // End tag <P> not found.
 	*/
 	public String Q06_stringBetweenTags(String stringToSearch, String tag) {
-		return null;
+		int  beginningIndex = stringToSearch.indexOf(tag);
+		if (beginningIndex==-1){
+			return "";
+		}
+
+		int finalIndex= stringToSearch.indexOf(tag,beginningIndex+tag.length());
+			if (finalIndex==-1){
+				return "";
+			}
+
+		return stringToSearch.substring(beginningIndex+tag.length(),finalIndex);
 	}
 
 	/*
@@ -142,9 +211,12 @@ public class PracticePart1 {
 	public boolean Q07_isPalindrome(String word) {
 		String reverseWord = "";
 		for (int i = 0; i < word.length(); i++) {
-			reverseWord += word.charAt(i);
+			reverseWord += word.charAt(word.length()-1-i);
+			if (reverseWord.equals(word)) {
+				return true;
+			}
 		}
-		return word.equalsIgnoreCase(reverseWord);
+		return false;
 	}
 
 	/*
@@ -166,8 +238,10 @@ public class PracticePart1 {
 	Q08_allowanceCalculator(7, 0, 40) -> 10
 	*/
 	public int Q08_allowanceCalculator(int weekly, int gift, int bonus) {
-		int allowance = weekly + gift + bonus * 4 / 52;
-		return allowance;
+		int allowance= weekly+(gift+bonus*4)/52;
+
+
+		return allowance ;
 	}
 
 	/*
@@ -190,8 +264,8 @@ public class PracticePart1 {
 	*/
 	public boolean Q09_isIncreasing(int[] numbers) {
 		boolean result = true;
-		for (int i = 0; i < numbers.length - 1; i++) {
-			if (numbers[i] > numbers[i++]) {
+		for (int i = 0; i < numbers.length-1 ; i++) {
+			if (numbers[i] > numbers[i+1]) {
 				result = false;
 				break;
 			}
@@ -213,7 +287,11 @@ public class PracticePart1 {
 		Q10_reverseList(new ArrayList<>(List.of())) -> []
 	*/
 	public List<Integer> Q10_reverseList(List<Integer> numbers) {
-		return new ArrayList<>();
+		List<Integer>reverseList = new ArrayList<>();
+		for(int i=numbers.size()-1; i>=0;i--){
+		reverseList.add(numbers.get(i));
+		}
+		return reverseList;
 	}
 
 	/*
@@ -237,6 +315,15 @@ public class PracticePart1 {
 		 	-> {"Dog": 3, "Chicken": 1, "Fish": 1, "Cat": 2, "Dinosaur": 1, "Llama": 1}
 	*/
 	public Map<String, Integer> Q11_idealPets(String[] suggestedPets) {
-		return new HashMap<>();
+		Map<String, Integer> petVotes= new HashMap<>();
+		for(String pet:suggestedPets){
+			if (petVotes.containsKey(pet)){
+				int countOfPets=petVotes.get(pet);
+				petVotes.put(pet,countOfPets+1);
+			} else {
+				petVotes.put(pet,1);
+			}
+		}
+		return petVotes;
 	}
 }

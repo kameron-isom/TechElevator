@@ -28,7 +28,6 @@ public class App {
        Map<String, String> membersfile= new HashMap<>();
         try {
           List<String> memberData=  FileStorageService.readContentsOfFile(FILE_BASE_PATH+ "members.dat");
-
             for (String memberList: memberData) {
                     String[] fields = memberList.split(FIELD_DELIMITER);
                     if (fields.length == 3) {
