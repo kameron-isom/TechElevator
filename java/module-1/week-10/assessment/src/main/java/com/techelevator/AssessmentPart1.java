@@ -15,7 +15,7 @@ public class AssessmentPart1 {
 	*/
 	public double Q01_calculateFraction(int numerator, int denominator) {
 
-		return Math.floor(numerator / denominator);
+		return numerator / (double)denominator;
 	}
 
 	/*
