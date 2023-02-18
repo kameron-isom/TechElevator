@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,8 @@ public class AssessmentPart1 {
 		 Q01_calculateFraction(5, 2) -> 2.5
 	*/
 	public double Q01_calculateFraction(int numerator, int denominator) {
-		return 0.0;
+
+		return Math.floor(numerator / denominator);
 	}
 
 	/*
@@ -24,8 +26,13 @@ public class AssessmentPart1 {
 		 Q02_isSumEven(13, 16) -> false
 	*/
 	public boolean Q02_isSumEven(int a, int b) {
-		return false;
+		//sum of two integers
+		int sum = a + b;
+		// determine if sum is even or odd using %2
+		return sum % 2 == 0;
+		// return true if even and false if odd
 	}
+
 
 	/*
 	The purpose of this method is to determine the appropriate price of a movie theatre ticket.
@@ -37,7 +44,11 @@ public class AssessmentPart1 {
 		 Q03_moviePrice(21) -> 12
 	*/
 	public int Q03_moviePrice(int age) {
-		return 0;
+		int ticketPrice=12;
+		if (age<=12){
+			ticketPrice= 7;
+		}
+		return ticketPrice;
 	}
 
 	/*
@@ -56,7 +67,24 @@ public class AssessmentPart1 {
 		 Q04_moviePriceMatinee(21, true, false) -> 8
 	*/
 	public int Q04_moviePriceMatinee(int age, boolean isBefore5pm, boolean isWeekend) {
-		return 0;
+		int ticketPrice= 0;
+		// determine if it is before 5pm or the weekend
+		boolean isMatinee= isBefore5pm && !isWeekend ;
+		boolean isNotMatinee= !isBefore5pm && isWeekend || !isBefore5pm && !isWeekend || isWeekend;
+		// determine age of movie goer
+		if(age<=12 && isMatinee){
+			ticketPrice=5;
+		}
+		if (age<=12&& isNotMatinee){
+			ticketPrice=7;
+		}
+		if (age>12 && isMatinee){
+			ticketPrice=8;
+		}
+		 if (age>12 && isNotMatinee){
+			 ticketPrice=12;
+		 }
+		return ticketPrice;
 	}
 
 	/*
@@ -69,7 +97,17 @@ public class AssessmentPart1 {
 		 Q05_sumOfOddNumbersBetween(-12, -1) -> -36
 	*/
 	public int Q05_sumOfOddNumbersBetween(int lowestNumber, int highestNumber) {
-		return 0;
+		// sum variable
+		int sum = 0;
+
+			//interate through numbers
+			for (int i = lowestNumber; i <= highestNumber; i++) {
+				// determine if it is odd
+				if (i % 2 != 0) {
+				sum+=i;
+			}
+		}
+		return sum;
 	}
 
 	/*
@@ -84,7 +122,15 @@ public class AssessmentPart1 {
 		 Q06_firstNCharacters("Submarine", 0) -> ""
 	*/
 	public String Q06_firstNCharacters(String originalString, int numCharacters) {
-		return null;
+		if(originalString.length()<3){
+			return originalString;
+		}
+
+		if(numCharacters<=0){
+			return "";
+		}
+
+		return originalString.substring(0,numCharacters);
 	}
 
 	/*
@@ -100,8 +146,9 @@ public class AssessmentPart1 {
 		 Q07_spaceReplacer("Stop Wait Listen ", "! ") -> "Stop! Wait! Listen! "
 	*/
 	public String Q07_spaceReplacer(String stringValue, String replaceSpaceWith) {
-		stringValue.replace(" ", replaceSpaceWith);
-		return stringValue;
+
+		return stringValue.replace(" ", replaceSpaceWith);
+
 	}
 
 
@@ -118,7 +165,7 @@ public class AssessmentPart1 {
 		 Q08_convertToFahrenheit(100.0) -> 212.0
 	*/
 	public double Q08_convertToFahrenheit(double degreesCelsius) {
-		double degreesFahrenheit = (9 / 5) * degreesCelsius + 32.0;
+		double degreesFahrenheit = (1.8 * degreesCelsius) + 32.0;
 		return degreesFahrenheit;
 	}
 
@@ -135,7 +182,7 @@ public class AssessmentPart1 {
 		 Q09_convertToCelsius(212.0) -> 100.0
 	*/
 	public double Q09_convertToCelsius(double degreesFahrenheit) {
-		double degreesCelsius = degreesFahrenheit - 32.0 * 5.0 / 9.0;
+		double degreesCelsius = (degreesFahrenheit - 32.0) * (5.0/9.0);
 		return degreesCelsius;
 	}
 
@@ -151,6 +198,12 @@ public class AssessmentPart1 {
 		 Q10_swapFirstAndLastElements([1,2]) -> [2,1]
 	*/
 	public int[] Q10_swapFirstAndLastElements(int[] arrayOfInts) {
+		int [] secondArray = {arrayOfInts.length} ;
+
+		secondArray[0]= arrayOfInts[0];
+		arrayOfInts[0]=arrayOfInts[arrayOfInts.length-1];
+
+		arrayOfInts[arrayOfInts.length-1]=secondArray[0];
 		return arrayOfInts;
 	}
 
@@ -166,7 +219,17 @@ public class AssessmentPart1 {
 		 Q11_mealCount(["Beef", "Chicken", "Fish", "Tofu", "Tofu", "Fish"]) -> {"Beef": 1, "Chicken": 1, "Fish": 2, "Tofu": 2}
 	*/
 	public Map<String, Integer> Q11_mealCount(String[] mealOrders) {
-		return null;
+		int count=0;
+		Map<String,Integer> numberOfMealsOrdered= new HashMap<>();
+		for(String meals: mealOrders){
+			if(numberOfMealsOrdered.containsKey(meals)){
+				 count= numberOfMealsOrdered.get(meals);
+						numberOfMealsOrdered.put(meals,count+1);
+			} else {
+				numberOfMealsOrdered.put(meals,1);
+			}
+		}
+		return numberOfMealsOrdered;
 	}
 
 }
