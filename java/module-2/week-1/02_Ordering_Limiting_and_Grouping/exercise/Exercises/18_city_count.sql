@@ -4,5 +4,7 @@
 SELECT state_abbreviation, COUNT (*)  AS num_cities 
 FROM city
 GROUP BY state_abbreviation
+HAVING state_abbreviation != 'DC'
 ORDER BY state_abbreviation 
+
 
