@@ -4,5 +4,5 @@ SELECT movie.title
 FROM movie
 JOIN person ON movie.director_id= person.person_id
 WHERE person_name= 'James Cameron'
-ORDER BY person_name ASC
+ORDER BY movie.title ASC
 
