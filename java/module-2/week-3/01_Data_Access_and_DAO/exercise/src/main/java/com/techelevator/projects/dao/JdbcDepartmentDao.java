@@ -20,11 +20,12 @@ public class JdbcDepartmentDao implements DepartmentDao {
 
 	@Override
 	public Department getDepartment(int id) {
-
+		Department dept = null;
 		String sql = "SELECT department_id, name FROM department WHERE department_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 		if(results.next()){
-			Department dept = mapRowToDepartment(results);
+			 dept = mapRowToDepartment(results);
+//			 id = results.getInt(id);
 			return dept;
 		}
 		return null;
@@ -32,6 +33,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
 
 	@Override
 	public List<Department> getAllDepartments() {
+		List<Department> departments = new ArrayList<>();
 		String sql = "SELECT department_id, name FROM department";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		var depts = new ArrayList<Department>();
@@ -41,7 +43,9 @@ public class JdbcDepartmentDao implements DepartmentDao {
 		}
 
 		return depts;
-		//return new ArrayList<>();
+		//return new ArrayList<>()
+
+
 	}
 
 	@Override

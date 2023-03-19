@@ -19,8 +19,10 @@ public class Tutorial {
     public static void main(String[] args) {
         BasicDataSource dataSource = new BasicDataSource();
         // Step One: Configure the database connection
-        
 
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/PizzaShop");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
 
         Tutorial tutorial = new Tutorial(dataSource);
         tutorial.run();
@@ -36,9 +38,10 @@ public class Tutorial {
 
         // Step Three: Copy returned values into an object
 
-
+        Sale sale50 = saleDao.getSale(50);
+        System.out.println(sale50);
         // Step Four: Add a new DAO method
-
+        Customer getCustomer(int customerId);
 
         // Step Five: Call a DAO method that returns a List
 
