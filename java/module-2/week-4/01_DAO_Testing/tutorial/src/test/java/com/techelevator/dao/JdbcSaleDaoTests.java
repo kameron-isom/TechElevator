@@ -11,7 +11,8 @@ import java.util.List;
 public class JdbcSaleDaoTests extends BaseDaoTests {
 
     // Step One: Add constants for Madge
-
+    private static final int MADGE_CUSTOMER_ID=3;
+    private static final int MADGE_FIRST_SALE_ID = 5;
     // Step Two: Add constants for customer without sale and non-existent customer
 
     private JdbcSaleDao jdbcSaleDao;
@@ -27,7 +28,14 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
     public void getSale_returns_correct_sale_for_id() {
 
         // Step One: Replace Assert.fail("Test not implemented.")
-        Assert.fail("Test not implemented.");
+        Sale madgeFirstSale= mapValuesToSale(MADGE_FIRST_SALE_ID, new BigDecimal("23.98"),true, MADGE_CUSTOMER_ID);
+
+        // ACT
+        Sale sale = jdbcSaleDao.getSale(MADGE_FIRST_SALE_ID);
+
+        //ASSERT
+        Assert.assertNotNull("getSale(" + MADGE_FIRST_SALE_ID +") returned null", sale);
+        assertSalesMatch("getSale(" + MADGE_FIRST_SALE_ID + ") returned wrong or partial data", madgeFirstSale, sale);
     }
 
     @Test

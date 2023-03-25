@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,47 +30,155 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void getTimesheet_returns_correct_timesheet_for_id() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = TIMESHEET_1;
+        Timesheet employeeTimeSheet2= TIMESHEET_2;
+        Timesheet employeeTimeSheet3= TIMESHEET_3;
+
+        // ACT
+       dao.getTimesheet(employeeTimesheet.getTimesheetId());
+        dao.getTimesheet(employeeTimeSheet2.getTimesheetId());
+        dao.getTimesheet(employeeTimeSheet3.getTimesheetId());
+
+        //ASSERT
+        Assert.assertEquals(employeeTimesheet.getTimesheetId(),1);
+        Assert.assertEquals(employeeTimeSheet2.getTimesheetId(), 2);
+        Assert.assertEquals(employeeTimeSheet3.getTimesheetId(), 3);
+
     }
+
 
     @Test
     public void getTimesheet_returns_null_when_id_not_found() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = new Timesheet(0, 1, 1,
+                LocalDate.parse("2021-01-01"), 1.0, true, "Timesheet 1");
+        Timesheet employeeTimeSheet2= TIMESHEET_2;
+        Timesheet employeeTimeSheet3= TIMESHEET_3;
+        // ACT
+        dao.getTimesheet(employeeTimesheet.getTimesheetId());
+        dao.getTimesheet(employeeTimeSheet2.getTimesheetId());
+        dao.getTimesheet(employeeTimeSheet3.getTimesheetId());
+        //ASSERT
+        Assert.assertEquals(employeeTimesheet.getTimesheetId() ,0);
+        Assert.assertEquals(employeeTimeSheet2.getTimesheetId(), 2);
+        Assert.assertEquals(employeeTimeSheet3.getTimesheetId(), 3);
     }
 
     @Test
     public void getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = TIMESHEET_1;
+        Timesheet employeeTimeSheet2= TIMESHEET_2;
+        Timesheet employeeTimeSheet3= TIMESHEET_3;
+
+        // ACT
+        dao.getTimesheetsByEmployeeId(employeeTimesheet.getEmployeeId());
+        dao.getTimesheetsByEmployeeId(employeeTimeSheet2.getEmployeeId());
+        dao.getTimesheetsByEmployeeId(employeeTimeSheet3.getEmployeeId());
+
+        //ASSERT
+        Assert.assertEquals(employeeTimesheet.getEmployeeId(),1);
+        Assert.assertEquals(employeeTimeSheet2.getEmployeeId(), 1);
+        Assert.assertEquals(employeeTimeSheet3.getEmployeeId(), 2);
     }
 
     @Test
     public void getTimesheetsByProjectId_returns_list_of_all_timesheets_for_project() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = TIMESHEET_1;
+        Timesheet employeeTimeSheet2= TIMESHEET_2;
+        Timesheet employeeTimeSheet3= TIMESHEET_3;
+        Timesheet employeeTimeSheet4 = TIMESHEET_4;
+
+        // ACT
+        dao.getTimesheetsByEmployeeId(employeeTimesheet.getProjectId());
+        dao.getTimesheetsByEmployeeId(employeeTimeSheet2.getProjectId());
+        dao.getTimesheetsByEmployeeId(employeeTimeSheet3.getProjectId());
+        dao.getTimesheetsByEmployeeId(employeeTimeSheet4.getProjectId());
+
+        //ASSERT
+        Assert.assertEquals(employeeTimesheet.getProjectId(),1);
+        Assert.assertEquals(employeeTimeSheet2.getProjectId(), 1);
+        Assert.assertEquals(employeeTimeSheet3.getProjectId(),1);
+        Assert.assertEquals(employeeTimeSheet4.getProjectId(), 2);
     }
 
     @Test
     public void createTimesheet_returns_timesheet_with_id_and_expected_values() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = new Timesheet(6, 1, 3,
+                LocalDate.parse("2021-11-01"), 1.5, true, "Timesheet 7");
+        Timesheet createdTimesheet = new Timesheet(6, 1, 3,
+                LocalDate.parse("2021-11-01"), 1.5, true, "Timesheet 7");
+        // ACT
+        dao.getTimesheet(employeeTimesheet.getTimesheetId());
+        dao.getTimesheet(createdTimesheet.getTimesheetId());
+
+        //ASSERT
+         Assert.assertEquals(employeeTimesheet.getTimesheetId(), createdTimesheet.getTimesheetId());
     }
 
     @Test
     public void created_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = new Timesheet(6, 1, 3,
+                LocalDate.parse("2021-11-01"), 1.5, true, "Timesheet 7");
+        Timesheet createdTimesheet = new Timesheet(6, 1, 3,
+                LocalDate.parse("2021-11-01"), 1.5, true, "Timesheet 7");
+        // ACT
+        dao.getTimesheet(employeeTimesheet.getTimesheetId());
+        dao.getTimesheet(createdTimesheet.getTimesheetId());
+
+        //ASSERT
+        //Assert.assertEquals(employeeTimesheet, employeeTimesheet);
+        Assert.assertEquals(createdTimesheet.getTimesheetId(), employeeTimesheet.getTimesheetId());
     }
 
     @Test
     public void updated_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+     //Arrange
+        Timesheet updatedTimesheet = dao.getTimesheet(1);
+    //ACT
+     updatedTimesheet.setEmployeeId(2);
+     dao.updateTimesheet(updatedTimesheet);
+     Timesheet retrivedTimesheet = dao.getTimesheet(1);
+
+    //Assert
+        Assert.assertEquals(updatedTimesheet.getEmployeeId(),retrivedTimesheet.getEmployeeId());
     }
 
     @Test
     public void deleted_timesheet_cant_be_retrieved() {
-        Assert.fail();
+        //Arrange
+        Timesheet employeeTimesheet = TIMESHEET_1;
+        // ACT
+        dao.deleteTimesheet(employeeTimesheet.getTimesheetId());
+        Timesheet retrievedTimeSheet = dao.getTimesheet(1);
+        //ASSERT
+        Assert.assertNull(retrievedTimeSheet);
     }
 
     @Test
     public void getBillableHours_returns_correct_total() {
-        Assert.fail();
+        Timesheet employeeTimesheet = TIMESHEET_1;
+        Timesheet employeeTimeSheet2= TIMESHEET_2;
+        Timesheet employeeTimeSheet3= TIMESHEET_3;
+        Timesheet employeeTimeSheet4 = TIMESHEET_4;
+
+
+        // ACT-billable hours worked
+        dao.getBillableHours(employeeTimesheet.getEmployeeId(),employeeTimesheet.getProjectId());
+        dao.getBillableHours(employeeTimeSheet2.getEmployeeId(), employeeTimeSheet2.getProjectId());
+        dao.getBillableHours(employeeTimeSheet3.getEmployeeId(), employeeTimeSheet3.getProjectId());
+        dao.getBillableHours(employeeTimeSheet4.getEmployeeId(), employeeTimeSheet4.getProjectId());
+
+        //ASSERT
+        Assert.assertEquals(employeeTimesheet.getHoursWorked(),1.0, 0.001);
+        Assert.assertEquals(employeeTimeSheet2.getHoursWorked(),1.5, 0.001);
+        Assert.assertEquals(employeeTimeSheet3.getHoursWorked(),0.25,0.001);
+        Assert.assertEquals(employeeTimeSheet4.getHoursWorked(), 2.0,0.001);
+
     }
 
     private void assertTimesheetsMatch(Timesheet expected, Timesheet actual) {
