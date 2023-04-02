@@ -8,25 +8,19 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class JdbcProductDao implements ProductDao {
+public class JdbcProductDao implements ProductDao {
 
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcProductDao (DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-    //list all products
-    //view product details
-    //add a product
-    //modify product details
-    //remove a product
-
 
     @Override
     public List<Product> getProducts() {
         List<Product> listOfAllProducts = new ArrayList<>();
         Product products = null;
-        String sql = "SELECT * FROM products";
+        String sql = "SELECT * FROM product";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         if(result.next()){
             products= mapRowToResults(result);
@@ -38,8 +32,8 @@ public abstract class JdbcProductDao implements ProductDao {
 
     @Override
     public Product createProduct(Product newProduct){
-        String sql = "INSERT INTO product (product_id, name, description, image_name, price) VALUES(?,?,?,?,?) RETURNING product_id";
-        Integer newId = jdbcTemplate.queryForObject(sql,int.class, newProduct.getProductId(),newProduct.getName(),newProduct.getDescription(),newProduct.getImageName(),newProduct.getPrice());
+        String sql = "INSERT INTO product (name, description, image_name, price) VALUES(?,?,?,?) RETURNING product_id";
+        Integer newId = jdbcTemplate.queryForObject(sql,int.class,newProduct.getName(),newProduct.getDescription(),newProduct.getImageName(),newProduct.getPrice());
         newProduct.setProductId(newId);
 
      return newProduct;
@@ -47,11 +41,21 @@ public abstract class JdbcProductDao implements ProductDao {
 
     @Override
     public void updateProduct(Product updatedProduct){
+        String sql = "UPDATE product SET name=? WHERE product_id=?";
+        int updatedRows= jdbcTemplate.update(sql,updatedProduct.getName(),updatedProduct.getProductId());
+        if (updatedRows!=1){
+            System.out.println("Unable to update Product");
+        }
 
     }
 
     @Override
-    public  void deleteProduct(int productId){
+    public void deleteProduct(int productId){
+        String query = "DELETE FROM line_item WHERE product_id=?";
+        int rowsDeleted = jdbcTemplate.update(query,productId);
+
+        String sql= "DELETE FROM product WHERE product_id=?";
+        int numberOfRowsDeleted = jdbcTemplate.update(sql, productId);
 
 }
 
@@ -64,4 +68,20 @@ public abstract class JdbcProductDao implements ProductDao {
         product.setPrice(result.getBigDecimal("price"));
         return product;
     }
-}
+    @Override
+    public Product getProduct(int productId) {
+        String sql ="SELECT * FROM product WHERE product_id=?";
+        Product product = new Product();
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,productId);
+        while(result.next()){
+           product= mapRowToResults(result);
+        }
+        return product;
+    }
+
+    @Override
+    public List<Product> getProductsWithNoSales() {
+        return null;
+    }
+};
+

@@ -50,7 +50,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
 	@Override
 	public List<Employee> getEmployeesByProjectId(int projectId) {
 		ArrayList<Employee> emps =  new ArrayList<>();
-		String sql = "SELECT em.employee_id, em.department_id, em.first_name, em.last_name, em.birth_date, em.hire_date FROM employee em JOIN project_employee pe ON em.employee_id = pe.employee_id WHERE pe.project_id = ?";
+		String sql = "SELECT em.employee_id, em.department_id, em.first_name, em.last_name, em.birth_date, em.hire_date " +
+				"FROM employee em JOIN project_employee pe ON em.employee_id = pe.employee_id WHERE pe.project_id = ?";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
 

@@ -10,9 +10,9 @@ import java.util.List;
 
 public class JdbcCustomerDao implements CustomerDao {
     private final JdbcTemplate jdbcTemplate;
-    public JdbcCustomerDao(DataSource dataSource, JdbcTemplate jdbcTemplate){
+    public JdbcCustomerDao(DataSource dataSource){
 
-        this.jdbcTemplate = jdbcTemplate;
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
 
@@ -49,8 +49,8 @@ public class JdbcCustomerDao implements CustomerDao {
 
     @Override
     public void updateCustomer(Customer updatedCustomer) {
-        String sql = "UPDATE customer SET customer_id= ?, name= ?, city= ?, state= ?, zip_code= ?,street_address1=?,street_address2= ? WHERE customer_id =?";
-        jdbcTemplate.update(sql,Integer.class, updatedCustomer.getCustomerId(),updatedCustomer.getName(), updatedCustomer.getCity(),updatedCustomer.getState(), updatedCustomer.getZipCode(), updatedCustomer.getStreetAddress1(), updatedCustomer.getStreetAddress2());
+        String sql = "UPDATE customer SET name= ? WHERE customer_id =?";
+        int updatedRows = jdbcTemplate.update(sql,  updatedCustomer.getName(),updatedCustomer.getCustomerId());
 
     }
 
