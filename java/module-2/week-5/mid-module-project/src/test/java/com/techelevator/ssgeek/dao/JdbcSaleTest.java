@@ -52,6 +52,7 @@ public class JdbcSaleTest extends BaseDaoTests {
     @Test
     public void createNewSale(){
 
+
     }
 
     @Test
