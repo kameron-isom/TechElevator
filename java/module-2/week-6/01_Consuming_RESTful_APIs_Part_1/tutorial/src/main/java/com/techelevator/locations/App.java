@@ -3,6 +3,7 @@ package com.techelevator.locations;
 import com.techelevator.locations.model.Location;
 import com.techelevator.locations.services.ConsoleService;
 import com.techelevator.locations.services.LocationService;
+import org.springframework.web.client.RestTemplate;
 
 public class App {
 
@@ -30,10 +31,20 @@ public class App {
         }
     }
 
+   private final RestTemplate restTemplate = new RestTemplate();
+    private static final String API_BASE_URL = "http://localhost:3000/locations/";
+
+
+
     private void handleListLocations() {
         //Step Five: List all locations
+//        Location [] locations =locationService.getAll();
+//        consoleService.printLocations(locations);
     }
+    public Location [] getAll(){
+        return restTemplate.getForObject(API_BASE_URL,Location[].class);
 
+    }
     private void handleShowLocationDetails() {
         //Step Six: Get location details
     }
