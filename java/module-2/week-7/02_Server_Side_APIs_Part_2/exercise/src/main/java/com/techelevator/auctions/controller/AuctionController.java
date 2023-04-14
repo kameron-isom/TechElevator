@@ -16,6 +16,8 @@ import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.model.Auction;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/auctions")
 public class AuctionController {
@@ -48,11 +50,19 @@ public class AuctionController {
             return dao.get(id);
         }
     }
-
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "", method = RequestMethod.POST)
-    public Auction create(@RequestBody Auction auction) {
+    public Auction create(@Valid @RequestBody Auction auction) {
         return dao.create(auction);
     }
 
-
-}
+    @RequestMapping(path ="/{id}" , method = RequestMethod.PUT)
+    public Auction update(@Valid @PathVariable int id, @RequestBody Auction auction){
+       if (id != auction.getId() ) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Id does not match",null);
+       }
+       if (id == auction.getId()){
+     return dao.update(auction,id) ;
+    }
+ return auction;
+}}
