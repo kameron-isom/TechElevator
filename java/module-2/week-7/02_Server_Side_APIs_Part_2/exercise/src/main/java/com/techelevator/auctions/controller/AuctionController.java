@@ -57,12 +57,16 @@ public class AuctionController {
     }
 
     @RequestMapping(path ="/{id}" , method = RequestMethod.PUT)
-    public Auction update(@Valid @PathVariable int id, @RequestBody Auction auction){
-       if (id != auction.getId() ) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Id does not match",null);
-       }
-       if (id == auction.getId()){
-     return dao.update(auction,id) ;
+    public Auction update(@Valid @PathVariable int id, @RequestBody Auction auction) {
+        Auction updatedAuction = dao.update(auction, id);
+        if (id != auction.getId()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id does not match", null);
+        }
+        return updatedAuction;
     }
- return auction;
-}}
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable int id){
+        dao.delete(id);
+    }
+}
