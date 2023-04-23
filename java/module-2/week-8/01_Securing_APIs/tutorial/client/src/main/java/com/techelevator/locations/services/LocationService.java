@@ -21,7 +21,15 @@ public class LocationService {
     public Location[] getAll() {
         Location[] locations = null;
         try {
-            locations = restTemplate.getForObject(API_BASE_URL, Location[].class);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(authToken);
+
+            HttpEntity<Void> entity = new HttpEntity<>(headers);
+            ResponseEntity<Location[]> response = restTemplate.exchange(API_BASE_URL, HttpMethod.GET, entity, Location[].class);
+            locations = response.getBody();
+
+
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
