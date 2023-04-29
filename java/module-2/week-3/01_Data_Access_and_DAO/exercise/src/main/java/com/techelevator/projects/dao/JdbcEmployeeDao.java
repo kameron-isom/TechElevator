@@ -72,7 +72,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		SqlRowSet employeeToProjectResults= jdbcTemplate.queryForRowSet(addEmployeeSql, employeeId,  projectId);
 		while ((employeeToProjectResults.next())){
 
-
+			project.add(employee);
 
 		}
 

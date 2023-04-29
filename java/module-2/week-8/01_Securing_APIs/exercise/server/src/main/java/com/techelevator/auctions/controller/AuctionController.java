@@ -2,6 +2,7 @@ package com.techelevator.auctions.controller;
 
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.dao.MemoryAuctionDao;
+import com.techelevator.auctions.dao.UserDao;
 import com.techelevator.auctions.model.Auction;
 import com.techelevator.auctions.model.User;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -72,10 +74,11 @@ public class AuctionController {
         dao.delete(id);
     }
 
-    @RequestMapping(path = "/whoami")
-    public String whoAmI(@PathVariable int id) {
-        Auction auction = dao.get(id);
-            return auction.getUser();
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/whoami", method = RequestMethod.POST)
+    public String whoAmI(@Valid @RequestBody Auction auction, Principal principal) {
+return null;
+
 
     }
 }
