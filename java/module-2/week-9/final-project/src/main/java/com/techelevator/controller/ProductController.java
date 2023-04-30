@@ -2,10 +2,12 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ProductDao;
 import com.techelevator.model.Product;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@PreAuthorize("permitAll")
 @RestController
 public class ProductController {
 
@@ -25,7 +27,7 @@ public class ProductController {
         }
         return dao.findAll();
     }
-    
+
     @RequestMapping(path ="/products/{id}", method = RequestMethod.GET)
     // view details about specific product
     public void viewOneProduct(@PathVariable int id){

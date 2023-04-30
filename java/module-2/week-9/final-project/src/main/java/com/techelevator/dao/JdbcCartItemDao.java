@@ -1,11 +1,15 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.CartItem;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +18,15 @@ public class JdbcCartItemDao implements CartItemDao {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private UserDao userDao;
+
     public JdbcCartItemDao (JdbcTemplate jdbcTemplate){
         this.jdbcTemplate =jdbcTemplate;
     }
+
+    public static String API_BASE_URL = "https://teapi.netlify.app/api/statetax?state=[state-code]";
+    RestTemplate restTemplate= new RestTemplate();
+
 
     @Override
     public List <CartItem> viewShoppingCart(){
@@ -41,7 +51,7 @@ public class JdbcCartItemDao implements CartItemDao {
     }
 
     @Override
-    public int addToShoppingCart(CartItem cartItem){
+    public int addToShoppingCart(CartItem cartItem, Principal principal){
        String sql = "INSERT INTO cart_item (user_id,product_id,quantity ) " +
                "VALUES (?,?,?)" +
                "RETURNING cart_item_id";
@@ -63,7 +73,7 @@ public class JdbcCartItemDao implements CartItemDao {
     }
 
     @Override
-    public void clearCart(){
+    public void clearCart(Principal principal){
         String sql ="DELETE FROM cart_item";
         int productRemoved= jdbcTemplate.update(sql);
     }
@@ -77,6 +87,34 @@ public class JdbcCartItemDao implements CartItemDao {
           cartItem = mapRowToCartItem(result);
         }
         return cartItem;
+    }
+
+    public BigDecimal findSubtotal(Principal principal){
+        String sql = "SELECT p.price FROM cart_item ci JOIN product p ON p.product_id = ci.product_id WHERE user_id=?";
+        SqlRowSet result= jdbcTemplate.queryForRowSet(sql,principal);
+        BigDecimal subtotal= null;
+        while (result.next()){
+            subtotal=subtotal.add(result.getBigDecimal("price"));
+        }
+        return subtotal;
+    }
+
+    public BigDecimal taxAmount(User user){
+        String sql= "SELECT state_code FROM user WHERE user_id=?";
+        SqlRowSet result= jdbcTemplate.queryForRowSet(sql,user.getId());
+        String stateCode= null;
+        if (result.next()){
+            stateCode=result.getString("state_code");
+        }
+        BigDecimal tax= restTemplate.getForObject(API_BASE_URL+stateCode,BigDecimal.class);
+        return tax.divide(new BigDecimal(100));
+    }
+
+
+    private User getUser(Principal principal){
+        String username = principal.getName();
+        User user = userDao.findByUsername(username);
+        return user;
     }
 
     private CartItem mapRowToCartItem(SqlRowSet result){

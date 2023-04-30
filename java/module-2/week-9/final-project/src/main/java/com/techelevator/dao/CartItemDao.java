@@ -1,17 +1,18 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.CartItem;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface CartItemDao {
-    List<CartItem> viewShoppingCart();
-   int addToShoppingCart(CartItem cartItem);
+
+   int addToShoppingCart(CartItem cartItem, Principal principal);
     void removeFromShoppingCart(int cartItemId);
-    void clearCart();
+    void clearCart(Principal principal);
     CartItem get(int cartItemId);
     CartItem view();
+
 
 
 
