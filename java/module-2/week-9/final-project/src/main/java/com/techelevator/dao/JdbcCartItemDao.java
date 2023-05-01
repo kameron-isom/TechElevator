@@ -51,7 +51,7 @@ public class JdbcCartItemDao implements CartItemDao {
     }
 
     @Override
-    public int addToShoppingCart(CartItem cartItem, Principal principal){
+    public int addToShoppingCart(CartItem cartItem){
        String sql = "INSERT INTO cart_item (user_id,product_id,quantity ) " +
                "VALUES (?,?,?)" +
                "RETURNING cart_item_id";

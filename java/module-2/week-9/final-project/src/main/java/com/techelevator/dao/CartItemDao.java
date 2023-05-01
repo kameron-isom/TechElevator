@@ -6,8 +6,8 @@ import java.security.Principal;
 import java.util.List;
 
 public interface CartItemDao {
-
-   int addToShoppingCart(CartItem cartItem, Principal principal);
+    List <CartItem> viewShoppingCart();
+    int addToShoppingCart(CartItem cartItem);
     void removeFromShoppingCart(int cartItemId);
     void clearCart(Principal principal);
     CartItem get(int cartItemId);
