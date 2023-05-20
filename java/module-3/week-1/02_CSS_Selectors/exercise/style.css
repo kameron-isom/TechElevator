@@ -11,6 +11,17 @@ body {
   background-color: rgba(192, 192, 192, 0.1);
 }
 
+aside {
+  position: fixed;
+  width: 200px;
+  border-color: blue;
+}
+
+img{
+  width: 120px;
+  margin: 30px;
+}
+
 ul {
   margin: 0;
   padding: 0;

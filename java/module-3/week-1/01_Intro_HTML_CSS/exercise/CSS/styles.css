@@ -1,8 +1,21 @@
 body{
     font-family: 'Times New Roman', Times, serif;
-    background-color: aliceblue;
+    background-color: crimson;
+    
+}
+img{
+    width: 400px;
 }
 
 h1{
     color: black;
+    text-align: center;
+}
+
+h2{
+  text-decoration: underline;  
+}
+
+blockquote{
+    font-style: italic;
 }
