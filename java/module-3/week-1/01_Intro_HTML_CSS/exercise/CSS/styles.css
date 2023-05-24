@@ -1,6 +1,8 @@
+
+
 body{
     font-family: 'Times New Roman', Times, serif;
-    background-color: crimson;
+    background-image: linear-gradient(to right,blue, rgb(13, 223, 223) );
     
 }
 img{
@@ -9,16 +11,34 @@ img{
     margin-right: auto;
     
 }
-
+aside{
+    margin: auto;
+}
 h1{
     color: black;
     text-align: center;
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
 }
 
 h2{
   text-decoration: underline;  
+  text-shadow: 0px 3px seagreen;
 }
 
 blockquote{
     font-style: italic;
+}
+section{
+    text-decoration: underline;
+    font-weight:bold;
+    text-transform: uppercase;
+    
+}
+
+thead{
+    text-align: left;
+    font-weight: bold;
+    
 }
