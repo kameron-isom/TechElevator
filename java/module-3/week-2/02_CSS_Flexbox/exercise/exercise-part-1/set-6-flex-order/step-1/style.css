@@ -9,6 +9,7 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   border: solid 1px #555;
+  display: flex;
 }
 
 .bio img {
@@ -16,3 +17,10 @@ body {
   border-radius: 999px;
   margin: 0 10px;
 }
+
+img :nth-child(1){
+  order: 2;
+}
+
+
+
