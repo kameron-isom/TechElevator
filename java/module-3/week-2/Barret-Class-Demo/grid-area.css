@@ -1,0 +1,38 @@
+body {
+    display:grid;
+    grid-template-columns: 1fr 1fr 0.05fr 0.75fr;   
+    grid-template-areas:
+        "header header header header"
+        "content content . sidebar"
+        "content content . sidebar2"
+        "footer footer footer footer";
+    gap:25px;
+}
+
+
+header  {
+    background-color: bisque;
+    grid-area: header;
+}
+
+main {
+    background-color: bisque;
+    grid-area: content;
+}
+
+footer {
+    background-color: bisque;
+    grid-area: footer;
+}
+
+aside {
+    background-color: bisque;
+}
+
+#aside1 {
+    grid-area: sidebar;    
+}
+
+#aside2 {
+    grid-area: sidebar2;    
+}
