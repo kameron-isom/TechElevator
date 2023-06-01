@@ -1,0 +1,52 @@
+body {
+    display: grid;
+    grid-template-rows: 150px 1fr 150px;
+    grid-template-columns: 150px 1fr 150px;
+    gap: 25px;
+    height: 96vh;
+}
+
+article {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    background-color: blue;
+    width: 200px;
+}
+
+header  {
+    background-color: bisque;
+}
+
+main {
+    background-color: bisque;
+    grid-row-start: 1;
+    grid-row-end:4;
+    grid-column-start: 2;
+}
+
+aside {
+    background-color: bisque;
+}
+
+body > div {
+    background-color: bisque;
+}
+
+#container {
+    height: 90vh;
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+#container div {
+    background-color: purple;
+    color:white;
+}
+
+#container div:last-child {
+    background-color: blue;
+}

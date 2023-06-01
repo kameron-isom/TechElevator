@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <picture>
+        <source srcset="image_400px.png"
+            media="(min-width:400px)" />
+        <source srcset="image_800px.png"
+            media="(min-width:800px)" />
+        <img src="image_1200px.png" alt="some picture" />
+    </picture>
+
+    <style>
+        img {
+            width:100%;
+            height: auto;
+        }
+    </style>
+</body>
+</html>
