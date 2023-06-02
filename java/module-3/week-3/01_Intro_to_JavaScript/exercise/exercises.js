@@ -1,17 +1,18 @@
-﻿/*
-1. **sumDouble** Given two int values, return their sum. Unless the two values are the 
+﻿
+1. /**sumDouble** Given two int values, return their sum. Unless the two values are the 
     same, then return double their sum.
 
 		sumDouble(1, 2) → 3
 		sumDouble(3, 2) → 5
 		sumDouble(2, 2) → 8
-
-		function sumDouble(x, y) {
-			// do logic here
-			// return result;
+*/
+function sumDouble(x, y) {
+			if(x===y){
+				(x + y) * 2
+			}
 			return x + y;
         }
-*/
+
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -22,6 +23,17 @@
 		hasTeen(20, 10, 13) → true
 */
 
+function hasTeen(x, y, z){
+			const isTeen= [13, 14, 15, 16, 17,18,19]
+			if(x>=13 && x<=19 || y>=13 && y<=19 || z>=13 && z<=19 ){
+			return true;
+			
+		}
+	
+		return false;
+	}
+
+
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
     last digit, such as with 27 and 57.
@@ -30,6 +42,17 @@
 		lastDigit(6, 17) → false
 		lastDigit(3, 113) → true
 */
+
+function lastDigit(  a, b){
+	digit1=a%10;
+	digit2=b%10;
+   if (digit1==digit2){
+		return true;
+   }
+	   return false;
+
+}
+
 
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
@@ -40,6 +63,18 @@
         seeColor("blueTimes") → "blue"
 */
 
+function seeColor(string){
+	
+	if(string.substring(0,3)=="red" || string=="red"){
+		return "red";
+	}
+	
+	if(string.substring(0,4)=="blue" || string =="blue"){
+		return "blue";
+}
+	return "";
+}
+
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, removes
     the even numbers, and returns a new array of just the the odd numbers.
@@ -47,6 +82,20 @@
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
+ function oddOnly(numberArray){
+	for(i=0;i<=numberArray.length;i++){	
+	 if (i%2!==0){
+		 numberArray.push(i);
+		 return numberArray ;
+	 }
+	 if(i%2==0){
+		let numberArray=[]
+		return numberArray;
+	}
+ }
+ return numberArray;
+}
+
 
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
@@ -56,6 +105,14 @@
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+function frontAgain(string){
+	if(string.slice(-2)== string.substring(0,1) && string.toLowerCase() || string.length==2){
+		return true;
+	
+	}
+	return false;
+}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -68,6 +125,16 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+
+function cigarParty(weekend, cigars){
+	if(weekend=true&& cigars>40){
+		return true;
+	}
+		if(weekend=false && cigars>=40 || cigars<=60){
+		return true;
+	}
+	return false;
+}
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:
@@ -82,6 +149,19 @@ In all other cases return the original number.
 	fizzBuzz(15) → "FizzBuzz"
 	fizzBuzz(8) → 8
 */
+
+function fizzBuzz(number){
+	if(number%3==0){
+		return "Fizz";
+	}
+	if(number%5==0){
+		return "Buzz"
+	}
+	 if (number%5==0 && number%3==0 ){
+		 return"FizzBuzz"
+	 }
+	 return number;
+}
 
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
