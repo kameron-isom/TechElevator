@@ -20,6 +20,14 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted( gpa, satScore=0, recommendation=false){
+    if(gpa>4.0 || satScore>1300 || gpa>3.0 && recommendation==true || satScore>1200 && recommendation==true){
+        return true;
+    }
+    return false;
+}
+
+
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
  * as a parameter. Use this function to filter unfilteredArray and return the result.
@@ -27,7 +35,11 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
+
+function useParameterToFilterArray(filterFunction){
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+ return unfilteredArray.filter(filterFunction)
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -41,6 +53,18 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+function makeNumber(first, second){
+    let number = ''+ first + second ;
+    if (second == true){
+        Number.parseInt( ''+ first + second); 
+    } else if (second !== true){
+        return Number.parseInt(''+first); 
+    }
+    return Number.parseInt( ''+ first + second);
+
+}
+
+
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
@@ -50,12 +74,32 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+function addAll(num=0){
+    for (num=0;num<=arguments.length;num++){
+        if(arguments.length==0){
+         return 0;
+        } 
+        num+=arguments[num];
+        Number.parseInt(num);
+    }
+    return num;
+}
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
 
+function makeHappy(Happy="Happy", string){
+    let arrayOfStrings = [string, string, string]
+    const newArray = arrayOfStrings.map((Happy)=>
+    {
+        return 'Happy' + string;
+    });
+    return newArray;
+
+} 
 /*
  * Write and document a function called getFullAddressesOfProperties
  * that takes an array of JavaScript objects. Each object contains the

@@ -151,15 +151,15 @@ In all other cases return the original number.
 */
 
 function fizzBuzz(number){
+	if (number%5==0 && number%3==0 ){
+		return"FizzBuzz"
+	}
 	if(number%3==0){
 		return "Fizz";
 	}
-	if(number%5==0){
+	if (number%5==0){
 		return "Buzz"
 	}
-	 if (number%5==0 && number%3==0 ){
-		 return"FizzBuzz"
-	 }
 	 return number;
 }
 
@@ -171,6 +171,32 @@ function fizzBuzz(number){
 	filterEvens([2, 4, 6]) → [2, 4, 6]
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
+
+function filterEvens(array){
+// let newArray= array;
+// 	for(i=0;i<array.length;i++){
+// 		if(i&2===0){
+// 			newArray.push(i);
+// 			return newArray;
+// 		}
+	
+// 	}
+// 	return newArray;
+
+
+let newArray= array;
+	for(i=0;i<array.length;i++){
+		if (i%2!==0){
+			newArray.pop(i);
+			return newArray
+		} else
+		
+	return newArray;
+
+}
+ return newArray; }
+
+
 
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
