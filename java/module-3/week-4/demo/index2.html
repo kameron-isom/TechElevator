@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app-div">
+        <h1>Here's a header</h1>
+    </div>
+    <script>
+        let h1 = document.querySelector('#app-div>h1');
+        h1.innerText = "Changing up the text";
+        h1.innerHTML = "I've changed my header";
+
+        let x = 1;
+    </script>
+
+    <style>
+        .wild {
+            font-variant: small-caps;
+            color: red;
+        }
+    </style>
+</body>
+</html>

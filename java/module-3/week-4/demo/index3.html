@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app-div">
+        <h1>Here is a header</h1>
+        <ul>
+            <li>List 1</li>
+            <li>List 2</li>
+            <li>List 3</li>
+        </ul>
+    </div>
+    <script>
+        let appDiv = document.getElementById('app-div');
+        let p = document.createElement('p');
+        p.innerText = "Now is the time for all JavaScript students learn about DOM elements.";
+        appDiv.appendChild(p);
+        
+
+        let h1 = document.querySelector('#app-div>h1');
+        let h2 = h1.cloneNode(true);
+        appDiv.appendChild(h2);
+
+        h1.innerText = "Changing my header";
+
+        h1.remove();
+
+        let x = 1;
+    </script>
+</body>
+</html>
