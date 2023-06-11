@@ -81,13 +81,23 @@ function displayGroceries() {
  * to every list item and add the class completed to each one
  */
 function markCompleted() {
-  const ul = document.getElementById('groceries');
-groceries.forEach((grocery)=>{ 
-  const li = document.querySelector('#groceries > li.completed'); 
-  li.insertAdjacentElement('afterbegin', grocery.completed);
+//   const ul = document.getElementById('groceries');
+// groceries.forEach((grocery)=>{ 
+//   const li = document.q
+//   li.innerText=grocery.food
+//   ul.appendChild(li);
+//   const checkCircle = document.createElement('i');
+//   checkCircle.setAttribute('class', 'far fa-check-circle');
+//   li.appendChild(checkCircle);
+// });
+// ul.appendChild(ul);
+const ul = document.getElementById('groceries');
+const li = document.createElement('li');
+groceries.forEach((todo) => {
+  li.innerText = todo.completed;
   ul.appendChild(li);
 });
-shoppingList.appendChild(ul);
+shoppingList.appendChild(li);
 }
 
 setPageTitle();
