@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id='mybody'>
+    <main id='mymain'>
+        <ul id='myul'>
+            <li id='myli'>
+                <p id='myp'>
+                    <div id='mydiv'>
+                        <button id='mybutton'>Click me</button>
+                    </div>
+                </p>
+            </li>
+        </ul>
+    </main>
+</body>
+<script>
+    function myListener(event){
+        alert('You clicked!');
+
+        //event.stopPropagation();
+    };
+
+    document.getElementById('mybutton').addEventListener('click', myListener);
+    document.getElementById('mydiv').addEventListener('click', myListener);
+    document.getElementById('myp').addEventListener('click', myListener);
+    document.getElementById('myli').addEventListener('click', myListener);
+    document.getElementById('myul').addEventListener('click', myListener);
+    document.getElementById('mymain').addEventListener('click', myListener);
+    document.getElementById('mybody').addEventListener('click', myListener);
+</script>
+</html>
