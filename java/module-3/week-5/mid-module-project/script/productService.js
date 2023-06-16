@@ -62,4 +62,47 @@ let productService = {
     return this.allProducts;
   },
 
+
 };
+function displayCards(){
+   const productCard= document.querySelectorAll('.product-card');
+  productService.allProducts.forEach((product => {
+    //product.productId.setAttribute("data-id", product.productId)
+    //product.setAttribute("data-id", product.productId);
+    div.setAttribute("data-id", product.productId);
+
+  }));
+   
+}
+  // const sku = document.querySelectorAll('.sku');
+  //   const price = document.querySelectorAll('.price');
+  //   const name = document.querySelectorAll('.product-name.action');
+  //   const image = document.querySelectorAll('.product-image');
+  // const productCard= document.querySelectorAll('.product-card');
+  // for(i=0;i<=productCard.length;i++){
+  // i.setAttribute("data-id", product.productId);
+  // }
+    
+
+    
+ // });
+//}
+ document.addEventListener('DOMContentLoaded', () =>{
+
+  const clickName= document.querySelector('.product-name.action');
+  clickName.addEventListener('click', window.alert);
+  
+  
+  const shoppingCart = document.querySelector('.cart');
+  shoppingCart.addEventListener('click', window.alert)
+  });
+  
+function searchProducts(searchTerm){
+//productService.allProducts.forEach
+  if(searchTerm==productService.getProducts){
+   foundProducts= productService.allProducts.filter(searchTerm);
+    return foundProducts;
+  }
+  return getProducts;
+};
+

@@ -2,3 +2,99 @@
     style.css - this stylesheet is linked from index.html to apply styles to the products home page.
     Add all of your custom styles here.
 */
+header{
+    display: flex;
+   justify-content : center;
+   border-style: solid;
+   border-color: black;
+   
+}
+
+ nav{
+    display: grid;
+    border-style: solid;
+    border-color: black;
+    
+} 
+ul{
+    display: grid;
+    margin: black, solid, 10px;
+    gap: 130px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "home cart . . . logout" ; 
+}
+
+
+#logout{
+    display: flex;
+    justify-content: flex-start;
+    grid-area:logout;
+}
+
+#Home{
+    grid-area:home;
+    
+}
+
+#cart{
+    grid-area:cart;
+}
+
+ul>#Home, #cart{
+    justify-content: flex-start;
+    display: flex;
+}
+
+main{
+    scroll-behavior: auto;
+    display: flexbox;
+}
+
+section{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+article{
+    border-style: solid;
+    border-color: black;  
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "sku . . price"
+                         "name name  . . "
+                         "image image image image"
+                         ". . . cart";
+} 
+.sku{
+    grid-area: sku;
+}
+
+.price{
+    grid-area: price;
+}
+
+.product-name.action{
+    grid-area: name;
+    text-align: left;
+}
+
+.product-image{
+grid-area: image;
+text-align: center;
+}
+
+.cart{
+    grid-area: cart;
+    text-align: right;
+}
+
+footer{
+    display: flex;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    
+}
