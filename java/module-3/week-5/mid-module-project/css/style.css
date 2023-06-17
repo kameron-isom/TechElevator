@@ -101,6 +101,7 @@ article{
     border-color: black;  
     display: grid;
     gap: 10px;
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: "sku . . price"
                          "name name  . . "
