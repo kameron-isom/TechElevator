@@ -2,24 +2,36 @@
     style.css - this stylesheet is linked from index.html to apply styles to the products home page.
     Add all of your custom styles here.
 */
+body{
+    border-style: solid;
+    border-color: black;
+    font-family: 'Pacifico', cursive;
+    
+}
 header{
     display: flex;
    justify-content : center;
-   border-style: solid;
-   border-color: black;
-   
+   border-bottom: solid;
+   border-color: black; 
+   height: auto;
+}
+
+header>img{
+    width: 30%;
+    height: auto;
 }
 
  nav{
     display: grid;
-    border-style: solid;
+    
     border-color: black;
+    border-top: none;
+    border-bottom: solid;
     
 } 
 ul{
     display: grid;
-    margin: black, solid, 10px;
-    gap: 130px;
+    
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: "home cart . . . logout" ; 
 }
@@ -45,16 +57,43 @@ ul>#Home, #cart{
     display: flex;
 }
 
+#product-and-search{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "product . searches"
+                        "para para para";
+}
+
+h2{
+    grid-area: product;
+    
+}
+#product-and-search input[type="text"]{
+    grid-area: search;
+    margin: 10px;
+    margin-left: 300px;
+}
+
+#search-bar{
+    grid-area: searches;
+}
+p{
+    grid-area: para;
+    width: 90%;
+}
+
 main{
     scroll-behavior: auto;
-    display: flexbox;
+    margin: 20px;
 }
 
 section{
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    display: flex;
+    gap: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-basis: 0px;
+    flex:1 1 0px;
 }
 
 article{
@@ -66,8 +105,16 @@ article{
     grid-template-areas: "sku . . price"
                          "name name  . . "
                          "image image image image"
-                         ". . . cart";
+                         ". . . cart"
+                         ". . . .";
 } 
+
+.product-image>img{
+        width:80%;
+        height: auto;
+        text-align: center;
+    }
+
 .sku{
     grid-area: sku;
 }
@@ -78,23 +125,84 @@ article{
 
 .product-name.action{
     grid-area: name;
-    text-align: left;
+    text-align: center;
+    width: auto;
 }
 
 .product-image{
 grid-area: image;
 text-align: center;
+
 }
+
 
 .cart{
     grid-area: cart;
     text-align: right;
+    font-size: 35px;
 }
 
 footer{
     display: flex;
     text-align: center;
-    border-style: solid;
-    border-color: black;
+    border-top: solid;
+    border-color: black;   
+}
+
+@media only screen and (max-width: 800px) {
+    
+
+    main{
+     
+        width: 100%;
+
+    }
+
+
+    #product-and-search{
+        display: grid;
+        grid-template-columns: 1fr  1fr;
+        grid-area: about;
+        grid-template-areas: "product  searches"
+                            "para para";
+    }
+
+    
+
+#product-and-search input[type="text"]{
+    margin: 0px;
+    margin-right: -1px;
+}
+
+    p{
+        width: 90%;
+    }
+
+    section{
+        width: 175%;
+    }
+
+    article{
+        display: grid;
+        grid-template-rows: 1fr;
+        width: 50%;
+    }
+
+    #product-cards{
+        display: grid;
+        gap: 20px;
+        grid-template-rows: 1fr; 
+        grid-area: pc; 
+    }
+
+    #search-bar{
+        margin: 30px;
+        margin-right: 25px;
+        font-size: small;
+        display: flex;
+        gap: 5px;
+        
+    }
+    
     
 }

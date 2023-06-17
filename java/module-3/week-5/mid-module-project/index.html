@@ -12,6 +12,10 @@
     <!-- Scripts -->
     <script src="script/productService.js"></script>
     <script src="script/app.js"></script>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -32,8 +36,22 @@
       </ul>
     </nav>
       <main>
-        <section id="product-cards">
-          <article class="product-card">
+        <div id= "product-and-search">
+        <h2>Products</h2>
+        <div id= "search-bar">
+          <input type="text" placeholder="search..."/>
+          <i class="fa-sharp fa-solid fa-magnifying-glass fa-bounce"></i>
+        </div>
+        <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Aliquet porttitor lacus luctus
+          accumsan tortor posuere ac ut. Magna fermentum iaculis eu non diam phasellus
+          vestibulum. Proin libero nunc consequat interdum. Pharetra convallis posuere
+          morbi leo urna molestie at elementum eu.
+        </p>
+        </div>
+          <section id="product-cards">
+          <!-- <article class="product-card">
             <div class="sku">SKU-001</div>
             <div class="price">$1.99</div>
             <div class="product-name action" data-id="1">A super product</div>
@@ -76,8 +94,8 @@
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
             </div>
-          </article>
-        </section>
+          </article>-->
+        </section> 
       </main>
       <footer>@ 2022 All Rights Reserved</footer>
   </body>
