@@ -71,59 +71,7 @@ let productService = {
    
 
 };
-// create cards
-function createCards(product){
-  const card = document.createElement('article');
-  card.classList.add('product-card')
-  
-  //create sku
-  let sku= document.createElement('div');
-  sku.classList.add('sku');
-  sku.innerText=product.productSku
-  card.appendChild(sku);
-  
-  // create name
-  let name= document.createElement('div');
-  name.classList.add('product-name', 'action');
-  name.innerText=product.name;
-  card.appendChild(name);
-  name.setAttribute("data-id", product.productId)
-  
-  // create price
-  let price= document.createElement('div');
-  price.classList.add('price');
-  price.innerText=product.price;
-  card.appendChild(price);
-  
-  // create image
-  let image= document.createElement('div');
-  image.classList.add('product-image');
-  let imagetag = document.createElement('img');
-  imagetag.setAttribute('src', product.imageName);
-  image.appendChild(imagetag);
-  card.appendChild(image);
-  
-  //create shopping cart
-  let shoppingCartIcon = document.createElement('div');
-  shoppingCartIcon.classList.add('cart');
-  let icon =document.createElement('i');
-  icon.setAttribute('title', 'add item to cart');
-  icon.classList.add('fa-solid','fa-cart-plus', 'icon','action');
-  shoppingCartIcon.appendChild(icon);
-  card.appendChild(shoppingCartIcon);
-  shoppingCartIcon.setAttribute("data-id", product.productId);
-  
-  return card;
-  }
-  
-  // display cards
-  function displayCards(product){
-      const section= document.getElementById('product-cards');
-       productService.allProducts.forEach((item)=>{
-         return section.appendChild(createCards(item));
-      });
-      
-  }
+
 
 
 
