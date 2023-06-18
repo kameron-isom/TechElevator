@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () =>{
       });
   
   });
->>>>>>> 57fcb4b964c8b78ae79b2607928aec144f8a32d1
 }
 
 function displayCards(){
@@ -135,7 +134,6 @@ function displayCards(){
     
 }
 
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () =>{
     createCards();
     displayCards();
@@ -152,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () =>{
         shoppingCart=Number(cartItem.getAttribute("data-it"));
         shoppingCart.addEventListener('click', window.alert("Item has been added to cart"))
     })
-=======
   //product search
   function ProductSearch(searchTerm){
     const search= document.getElementById('search-tool')
@@ -167,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     displayCards(productService.getProducts());
 }
 
->>>>>>> 57fcb4b964c8b78ae79b2607928aec144f8a32d1
     });
   
 
