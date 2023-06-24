@@ -1,0 +1,25 @@
+{
+  "name":"movieapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts":{
+      "serve": "vue-cli-service serve",
+      "build": "vue-cli-service build"
+  },
+  "dependencies": {
+      "core-js":"^3.8.3",
+      "vue":"^2.6.12"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
+    "vue-loader-v16": "npm:vue-loader@16.1.2",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "overrides": {
+    "core-js": "^3.8.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
