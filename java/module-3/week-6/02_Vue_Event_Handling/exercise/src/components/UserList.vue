@@ -64,24 +64,25 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button @click= "toggleFields()" >Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" hidden>
+    
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-bind="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-bind="newUser.lastName"/>
       </div>
       <div class="field">
-        <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <label for="username">Username: </label>
+        <input type="text" name="username" v-bind="newUser.username" />
       </div>
       <div class="field">
-        <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <label for="emailAddress">Email Adress:</label>
+        <input type="text" name="emailAddress" v-bind="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -164,9 +165,22 @@ export default {
   methods: {
     getNextUserId() {
       return this.nextUserId++;
-    }
+    },
+    addedNewUser(addNewUser){
+       addNewUser=this.newUser;
+      return this.users.push( this.getNextUserId(addNewUser));
+    },
+    
+    
   },
   computed: {
+     toggleFields(){
+      let forum = document.getElementById("frmAddNewUser");
+      return forum.style.display="block";
+    }
+
+  },
+
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
@@ -204,8 +218,8 @@ export default {
       }
       return filteredUsers;
     }
-  }
-};
+  };
+
 </script>
 
 <style scoped>
@@ -233,6 +247,9 @@ form {
   margin: 20px;
   width: 350px;
 }
+#frmAddNewUser{
+  display: none;
+}
 .field {
   padding: 10px 0px;
 }
@@ -246,6 +263,7 @@ button {
 .all-actions {
   margin-bottom: 40px;
 }
+
 .btn.save {
   margin: 20px;
   float: right;
