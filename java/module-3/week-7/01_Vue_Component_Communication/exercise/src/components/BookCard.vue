@@ -1,11 +1,12 @@
 <template>
   <div class="card">
-
+      
   </div>
 </template>
 
 <script>
 export default {
+    props: ['show-book'],
     name: 'book-card'
 }
 </script>

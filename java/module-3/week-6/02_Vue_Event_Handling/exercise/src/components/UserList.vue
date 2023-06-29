@@ -64,9 +64,9 @@
       <button>Delete Users</button>
     </div>
 
-    <button @click= "toggleFields()" >Add New User</button>
+    <button>Add New User</button>
 
-    <form id="frmAddNewUser" hidden>
+    <form id="frmAddNewUser" v-show="hide" v-on:click="hide===display">
     
       <div class="field">
         <label for="firstName">First Name:</label>
@@ -85,6 +85,7 @@
         <input type="text" name="emailAddress" v-bind="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
+    
     </form>
   </div>
 </template>
@@ -94,6 +95,8 @@ export default {
   name: "user-list",
   data() {
     return {
+      display:true,
+      hide:false,
       filter: {
         firstName: "",
         lastName: "",
@@ -247,8 +250,8 @@ form {
   margin: 20px;
   width: 350px;
 }
-#frmAddNewUser{
-  display: none;
+form>#frmAddNewUser{
+  display: block;
 }
 .field {
   padding: 10px 0px;
